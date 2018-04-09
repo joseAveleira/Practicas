@@ -90,10 +90,21 @@ app.put('/devices/:type', function (req, res) {
 
 });
 
+app.delete('/devices/:type', function (req, res) {
+    console.log('DELETE  /devices/find');
+    Device.remove(req.params, function (err) {
+        if (err) {
+            res.send(err);
+        } else {
+            res.json({ message: 'dispositivo eliminado' });
+        }
+    });
+});
 
 
 
-//Peticion post para buscar dispositivos
+
+//Peticion POST para buscar dispositivos
 app.post('/devices/find', function (req, res) {
     console.log('POST  /devices/find');
 
